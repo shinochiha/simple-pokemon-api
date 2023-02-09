@@ -12,7 +12,6 @@ type Pokemon struct {
 	ID                    int    `json:"id,omitempty" gorm:"primaryKey;type:int"`
 	Name                  string `json:"name" gorm:"type:varchar(100)"`
 	Type                  string `json:"type" gorm:"type:varchar(255)"`
-	Move                  string `json:"move" gorm:"type:varchar(255)"`
 	ImageBackDefault      string `json:"back_default" gorm:"type:varchar(255)"`
 	ImageBackFemale       string `json:"back_female" gorm:"type:varchar(255)"`
 	ImageBackShiny        string `json:"back_shiny" gorm:"type:varchar(255)"`
@@ -34,7 +33,6 @@ func (o *Pokemon) Schema() map[string]interface{} {
 			"id":                  {"name": "p.id", "as": "id"},
 			"name":                {"name": "p.name", "as": "name", "type": "string"},
 			"type":                {"name": "p.type", "as": "type", "type": "string"},
-			"move":                {"name": "p.move", "as": "move", "type": "string"},
 			"image.front_default": {"name": "p.image_front_default", "as": "front_default", "type": "string"},
 		},
 	}
@@ -119,10 +117,6 @@ func (o *Pokemon) GetPaginated(ctx helpers.Context, params map[string][]string) 
 			for _, t := range pokeData.Types {
 				types = append(types, t.Type.Name)
 			}
-			var moves []string
-			for _, m := range pokeData.Moves {
-				moves = append(moves, m.Move.Name)
-			}
 
 			po := Pokemon{
 				ID:                    i + 1,
@@ -136,7 +130,6 @@ func (o *Pokemon) GetPaginated(ctx helpers.Context, params map[string][]string) 
 				ImageFrontShiny:       pokeData.Sprites.FrontShiny,
 				ImageFrontShinyFemale: pokeData.Sprites.FrontShinyFemale,
 				Type:                  types[0],
-				Move:                  moves[0],
 			}
 			helpers.GetDB(ctx).Model(Pokemon{}).Create(&po)
 		}
