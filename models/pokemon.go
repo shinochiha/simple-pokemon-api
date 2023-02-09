@@ -66,7 +66,7 @@ func (o *Pokemon) GetPaginated(ctx helpers.Context, params map[string][]string) 
 	var item struct{}
 	ra := helpers.GetDB(ctx).Table("pokemons").Where("id = ?", 1).Limit(1).Find(&item).RowsAffected
 	if ra < 1 {
-		response, err := http.Get("https://pokeapi.co/api/v2/pokemon?limit=5")
+		response, err := http.Get("https://pokeapi.co/api/v2/pokemon?limit=1279")
 		if err != nil {
 			fmt.Printf("The HTTP request failed with error %s\n", err)
 		}
