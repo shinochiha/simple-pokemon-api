@@ -50,6 +50,7 @@ Note : Wait a few minutes until the process is complete, until the data of 1279 
 3. Get Detail Pokemon
 ```
 GET http://localhost:4000/api/v1/pokemons/{id} // Select the ID of the Pokemon you want to get detail
+```
 
 4. Capture Pokemon
 ```
@@ -59,8 +60,7 @@ POST http://localhost:4000/api/v1/capture_pokemon/{id} // Select the ID of the P
 5. Save My Pokemon and Provide the name of the Pokemon.
 ```
 PUT http://localhost:4000/api/v1/save_pokemon/1
-```
-```
+
 {
     "nickname":"My-ivysaur"
 }
@@ -74,8 +74,7 @@ GET http://localhost:4000/api/v1/mypokemons
 7. Change the name of the pokemon you have
 ```
 http://localhost:4000/api/v1/change_name_pokemon/1
-```
-```
+
 {
     "nickname":"My-bulbasaur"
 }
