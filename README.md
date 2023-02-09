@@ -1,4 +1,4 @@
-# Nidzom POS API
+# Simple Pokemon API
 
 ## Getting Started
 1. Make sure you have [Go](https://go.dev) and Postgresql installed .
